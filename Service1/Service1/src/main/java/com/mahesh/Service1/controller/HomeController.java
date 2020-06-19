@@ -1,7 +1,7 @@
 package com.mahesh.Service1.controller;
 
 import com.mahesh.Service1.dto.Employee;
-import com.mahesh.Service1.service.ServiceClass;
+import com.mahesh.Service1.service.ServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 public class HomeController {
 
     @Autowired
-    ServiceClass serviceClass;
+    ServiceClient serviceClient;
 
     @GetMapping("/")
     public String welcome(){
@@ -18,7 +18,7 @@ public class HomeController {
 
     @PostMapping("/")
     public Object welcomeName(@RequestBody Employee employee){
-        return serviceClass.callService(employee);
+        return serviceClient.callService(employee);
     }
 
 }

@@ -11,9 +11,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Service
-public class ServiceClass {
+public class ServiceClient {
 
-    private static final Logger LOG = Logger.getLogger(ServiceClass.class.getName());
+    private static final Logger LOG = Logger.getLogger(ServiceClient.class.getName());
 
     @Autowired
     RestTemplate restTemplate;
