@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 @Service
 public class ServiceClass {
 
-//    private static final Logger LOG = Logger.getLogger(ServiceClass.class.getName());
+    private static final Logger LOG = Logger.getLogger(ServiceClass.class.getName());
 
     @Autowired
     RestTemplate restTemplate;
@@ -26,10 +26,10 @@ public class ServiceClass {
     private String service3Url;
 
     public Object callService(Employee employee) {
-//        LOG.log(Level.INFO, "Service2 is getting called in service1");
+        LOG.log(Level.INFO, "Service2 is getting called in service1");
         ResponseEntity<String> responseEntity = restTemplate.getForEntity(service2Url, String.class);
         String e = responseEntity.getBody();
-//        LOG.log(Level.INFO, "Service3 is getting called in service1");
+        LOG.log(Level.INFO, "Service3 is getting called in service1");
         ResponseEntity<String> responseEntity2 = restTemplate.postForEntity(service3Url, employee, String.class);
         String result = e+responseEntity2.getBody();
         return result;

@@ -7,14 +7,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 @RestController
 public class HomeController {
+
+    private static final Logger LOG = Logger.getLogger(HomeController.class.getName());
 
     @Autowired
     ServiceClass serviceClass;
 
     @GetMapping("/")
     public String welcome(){
+        LOG.log(Level.INFO, "in service2");
         return "Hello ";
     }
 }
