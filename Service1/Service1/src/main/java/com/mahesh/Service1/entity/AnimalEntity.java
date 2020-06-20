@@ -3,6 +3,7 @@ package com.mahesh.Service1.entity;
 import com.mahesh.Service1.dto.AnimalDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import javax.persistence.*;
 @Table(name = "animal")
 @Getter
 @Setter
+@NoArgsConstructor
 public class AnimalEntity {
     @Id
     @GeneratedValue

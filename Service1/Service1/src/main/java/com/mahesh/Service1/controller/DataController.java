@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class DataController {
@@ -23,9 +24,14 @@ public class DataController {
         return serviceData.get(id);
     }
 
-    @GetMapping("/get")
+    @GetMapping("/get-db-data")
     public List<AnimalDto> getAll(){
         return serviceData.getAll();
+    }
+
+    @GetMapping("/get")
+    public Map formatData(){
+        return serviceData.formatData();
     }
 
     @DeleteMapping("/delete/{id}")
