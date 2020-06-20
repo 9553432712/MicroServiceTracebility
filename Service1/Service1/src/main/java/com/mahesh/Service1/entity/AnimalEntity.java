@@ -16,7 +16,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class AnimalEntity {
     @Id
-    @GeneratedValue
+//    @GeneratedValue
     @Column(name = "id")
     int id;
     @Column(name = "parentid")

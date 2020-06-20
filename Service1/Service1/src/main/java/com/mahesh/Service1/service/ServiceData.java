@@ -8,40 +8,51 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @Service
 public class ServiceData {
 
+    private static final Logger LOG = Logger.getLogger(ServiceData.class.getName());
+
     @Autowired
     AnimalRepository animalRepository;
 
     public AnimalDto create(AnimalDto animalDto){
+        LOG.log(Level.INFO, "create "+animalDto);
         AnimalEntity animalEntity = animalRepository.save(animalDto.toData());
         return animalEntity.toData();
     }
 
     public List<AnimalDto> getAll() {
+        LOG.log(Level.INFO, "DB Data");
         List<AnimalEntity> animalEntityList = animalRepository.findAll();
         List<AnimalDto> animalDtoList = animalEntityList.stream().map(animalEntity -> animalEntity.toData()).collect(Collectors.toList());
         return animalDtoList;
     }
 
     public AnimalDto get(int id) {
+        LOG.log(Level.INFO, "Get by id");
         Optional<AnimalEntity> animalEntity = animalRepository.findById(id);
         return animalEntity.get().toData();
     }
 
     public AnimalDto edit(AnimalDto animalDto) {
+        LOG.log(Level.INFO, "Update");
         AnimalEntity animalEntity = animalRepository.save(animalDto.toData());
         return animalEntity.toData();
     }
 
     public void delete(int id) {
+
+        LOG.log(Level.INFO, "Delete");
         animalRepository.deleteById(id);
     }
 
     public Map formatData() {
+        LOG.log(Level.INFO, "Get data");
         List<AnimalEntity> animalEntityList = animalRepository.findAll();
         List<AnimalDto> animalDtoList = animalEntityList.stream().map(animalEntity -> animalEntity.toData()).collect(Collectors.toList());
         return formatData(animalDtoList);
