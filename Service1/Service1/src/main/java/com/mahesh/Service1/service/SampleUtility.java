@@ -38,11 +38,15 @@ public class SampleUtility {
             if(m.containsKey(getNameByparentId(parent, animalDtoList))){
                 List<SubAnimalDto> l = m.get(getNameByparentId(parent, animalDtoList));
                 l.add(new SubAnimalDto(animalDtoList.get(i).name));
-                m.put(getNameByparentId(parent, animalDtoList),l);
+                if(!getNameByparentId(parent, animalDtoList).equals("")) {
+                    m.put(getNameByparentId(parent, animalDtoList), l);
+                }
             }else {
                 List<SubAnimalDto> l = new ArrayList<>();
                 l.add(new SubAnimalDto(animalDtoList.get(i).name));
-                m.put(getNameByparentId(parent, animalDtoList),l);
+                if(!getNameByparentId(parent, animalDtoList).equals("")) {
+                    m.put(getNameByparentId(parent, animalDtoList), l);
+                }
             }
         }
         System.out.println(m);
