@@ -26,9 +26,7 @@ public class SampleUtility {
         animalDtoList.add(new AnimalDto(13,	4,	"Thief",	"yellow"));
         animalDtoList.add(new AnimalDto(14,	4,	"Bard",	"blue"));
         animalDtoList.add(new AnimalDto(15,	13,	"Assassin",	"lighblue"));
-        animalDtoList.stream().forEach(a ->System.out.println(a));
-        Map<Integer, List<AnimalDto>> postsPerType  = animalDtoList.stream().collect(groupingBy(AnimalDto::getParentid));
-        System.out.println(postsPerType);
+        
 
         Map<String, List<SubAnimalDto>> m = new HashMap();
         AnimalDto animalDto = null;
