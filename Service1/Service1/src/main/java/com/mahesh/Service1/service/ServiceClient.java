@@ -25,7 +25,7 @@ public class ServiceClient {
     @Value("${service3.url}")
     private String service3Url;
 
-    public Object callService(Employee employee) {
+    public String callService(Employee employee) {
         LOG.log(Level.INFO, "Service2 is getting called in service1");
         ResponseEntity<String> responseEntity = restTemplate.getForEntity(service2Url, String.class);
         String e = responseEntity.getBody();

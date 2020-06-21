@@ -21,44 +21,36 @@ public class ServiceData {
     AnimalRepository animalRepository;
 
     public AnimalDto create(AnimalDto animalDto){
-        LOG.log(Level.INFO, "create "+animalDto);
         AnimalEntity animalEntity = animalRepository.save(animalDto.toData());
         return animalEntity.toData();
     }
 
     public List<AnimalDto> getAll() {
-        LOG.log(Level.INFO, "DB Data");
         List<AnimalEntity> animalEntityList = animalRepository.findAll();
         List<AnimalDto> animalDtoList = animalEntityList.stream().map(animalEntity -> animalEntity.toData()).collect(Collectors.toList());
         return animalDtoList;
     }
 
     public AnimalDto get(int id) {
-        LOG.log(Level.INFO, "Get by id");
         Optional<AnimalEntity> animalEntity = animalRepository.findById(id);
         return animalEntity.get().toData();
     }
 
     public AnimalDto edit(AnimalDto animalDto) {
-        LOG.log(Level.INFO, "Update");
         AnimalEntity animalEntity = animalRepository.save(animalDto.toData());
         return animalEntity.toData();
     }
-
     public void delete(int id) {
-
-        LOG.log(Level.INFO, "Delete");
         animalRepository.deleteById(id);
     }
 
     public Map formatData() {
-        LOG.log(Level.INFO, "Get data");
         List<AnimalEntity> animalEntityList = animalRepository.findAll();
         List<AnimalDto> animalDtoList = animalEntityList.stream().map(animalEntity -> animalEntity.toData()).collect(Collectors.toList());
         return formatData(animalDtoList);
     }
 
-    private Map formatData(List<AnimalDto> animalDtoList){
+    public Map formatData(List<AnimalDto> animalDtoList){
         Map<String, List<SubAnimalDto>> m = new HashMap();
         AnimalDto animalDto = null;
         int parentId;
@@ -84,7 +76,7 @@ public class ServiceData {
         System.out.println(m);
         return m;
     }
-    private static String getNameByparentId(int parent, List<AnimalDto> animalDtoList) {
+    public static String getNameByparentId(int parent, List<AnimalDto> animalDtoList) {
         for(int i=0;i<animalDtoList.size();i++){
             if(animalDtoList.get(i).getId()==parent){
                 return animalDtoList.get(i).getName();

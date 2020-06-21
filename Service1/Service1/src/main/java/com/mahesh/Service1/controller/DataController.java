@@ -7,9 +7,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 @RestController
 public class DataController {
+
+    private static final Logger LOG = Logger.getLogger(DataController.class.getName());
 
     @Autowired
     ServiceData serviceData;
@@ -20,7 +23,7 @@ public class DataController {
     }
 
     @GetMapping("/get/{id}")
-    public AnimalDto create(@PathVariable("id") int id){
+    public AnimalDto getById(@PathVariable("id") int id){
         return serviceData.get(id);
     }
 

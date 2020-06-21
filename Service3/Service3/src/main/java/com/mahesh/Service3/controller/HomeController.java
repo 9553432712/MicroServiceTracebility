@@ -18,7 +18,6 @@ public class HomeController {
 
     @PostMapping("/")
     public String call(@RequestBody Employee employee){
-        LOG.log(Level.INFO, "in service3");
         return employee.toString();
     }
 
